@@ -67,14 +67,14 @@ function returnFnResult(fn) {
    console.log(f()); // выведет 13
  */
 function returnCounter(number = 0) {
-  function F() {
+  return function F() {
     return ++number;
   }
 
   // console.log(F());
   // console.log(F());
 
-  return F();
+  //return F();
 }
 
 /*
