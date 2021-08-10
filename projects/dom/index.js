@@ -54,7 +54,7 @@ function findAllPSiblings(where) {
   const array = [];
 
   for (const child of where.children) {
-    if (child.nextElementSibling && child.nextElementSibling.tagName === 'p') {
+    if (child.nextElementSibling && child.nextElementSibling.tagName === 'P') {
       array.push(child);
     }
   }
@@ -158,27 +158,27 @@ function deleteTextNodesRecursive(where) {
  */
 function collectDOMStat(root) {
   const statistic = {
-    tag: {},
-    class: {},
-    text: 0,
+    tags: {},
+    classes: {},
+    texts: 0,
   };
 
   function getStatistic(root) {
     for (const child of root.childNodes) {
       if (child.nodeType === Element.TEXT_NODE) {
-        statistic.text++;
+        statistic.texts++;
       } else if (child.nodeType === Element.ELEMENT_NODE) {
-        if (child.tagName in statistic.tag) {
-          statistic.tag[child.tagName]++;
+        if (child.tagName in statistic.tags) {
+          statistic.tags[child.tagName]++;
         } else {
-          statistic.tag[child.tagName] = 1;
+          statistic.tags[child.tagName] = 1;
         }
 
         for (const className of child.classList) {
-          if (className in statistic.class) {
-            statistic.class[className]++;
+          if (className in statistic.classes) {
+            statistic.classes[className]++;
           } else {
-            statistic.class[className] = 1;
+            statistic.classes[className] = 1;
           }
         }
         getStatistic(child);
